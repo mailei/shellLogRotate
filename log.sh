@@ -1,15 +1,13 @@
 #!/bin/sh
 DATE=`date +%Y%m%d -d '1 day ago'`
 
-applog="app.log"
-errorlog="error.log"
-logfiles="${applog} ${errorlog}"
+logfiles="$1 $2"
 
 # read conf file(log dir)
 LOGDIR=`cat conf`
 
 # test write log
-echo "test" >> ./log/${applog}
+echo "test" >> ./log/$1
 
 for logFile in $logfiles
 do
