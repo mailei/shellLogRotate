@@ -14,6 +14,9 @@ for logFile in $LOGFILES
 do
   for file in $logFile
   do
+    if [ -f ${LOGDIR}/${file}.${DATE} ];then
+    break 
+    fi
     cp ${LOGDIR}/${file} ${LOGDIR}/${file}.$DATE
     if [ $? = 0 ];then
       # prune log file
