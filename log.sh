@@ -15,7 +15,7 @@ do
   for file in $logFile
   do
     if [ -f ${LOGDIR}/${file}.${DATE} ];then
-    break 
+      break 
     fi
     cp ${LOGDIR}/${file} ${LOGDIR}/${file}.$DATE
     if [ $? = 0 ];then
