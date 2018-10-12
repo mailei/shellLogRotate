@@ -1,15 +1,16 @@
 #!/bin/sh
 DATE=`date +%Y%m%d -d '1 day ago'`
 
-logfiles="$1 $2"
+LOGFILES="$1 $2"
 
 # read conf file(log dir)
 LOGDIR=`cat conf`
 
 # test write log
 echo "test" >> ./log/$1
+echo "test" >> ./log/$2
 
-for logFile in $logfiles
+for logFile in $LOGFILES
 do
   for file in $logFile
   do
@@ -19,7 +20,7 @@ do
       cp /dev/null ${LOGDIR}/${file}
     fi
     # delete log file before 14 days
-    find ${LOGDIR}/${file}.* -mtime +13 | xargs --no-run-if-empty /bin/rm
+    find ${LOGDIR}/${file}.* -mtime +13 | xargs --no-run-if-empty rm
   done
 done
 exit 0
